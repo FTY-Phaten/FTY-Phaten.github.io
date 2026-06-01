@@ -1,0 +1,184 @@
+# ref link: https://alinex.gitlab.io/env/mkdocs/
+#===================================================================================#
+# Site Information
+#===================================================================================#
+site_name: NEXIS LINK
+site_description:  Nexis Link Technology Co., Ltd. - NEXIS LINK
+site_author: NEXIS LINK
+site_dir: '../../site/zh'
+copyright: Copyright &copy; 2024 <a href="https://www.phaten.com">Nexis Link Technology Co., Ltd.</a>
+
+#===================================================================================#
+# Mkdocs Theme (Material Mkdocs) + Extras
+#===================================================================================#
+theme:
+  name: material
+  custom_dir: material
+  language: en
+  #logo: assets/images/logos/binbash-icon.png
+  # icon: # https://www.materialpalette.com/icons
+  logo: assets/images/logos/nexis-ico.png
+  favicon: assets/images/logos/nexis-ico.png
+  font:
+    text: Roboto
+    code: Roboto Mono
+  features:
+    - content.code.annotate
+    - content.code.copy
+    - content.code.select
+    - content.footnote.tooltips
+    - content.tooltips
+    - navigation.indexes
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.instant.preview
+    - navigation.tabs
+    - navigation.top
+    - navigation.path
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
+  palette:
+    - scheme: default
+      #primary: teal
+      accent: teal
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    - scheme: slate
+      #primary: teal
+      accent: teal
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+
+plugins:
+  - blog
+  - search:
+      separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - minify:
+      minify_html: true
+  - glightbox:
+       touchNavigation: true
+       loop: false
+       effect: zoom
+       slide_effect: slide
+       width: 100%
+       height: auto
+       zoomable: true
+       draggable: true
+       skip_classes:
+         - custom-skip-class-name
+       auto_caption: true
+       caption_position: bottom
+       background: white
+       shadow: true
+
+extra_css:
+    - assets/stylesheets/extra.css
+
+extra_javascript:
+    - assets/javascripts/extra.js
+
+extra:
+  status:
+    new: Recently added
+    deprecated: Deprecated
+  analytics:
+    provider: google
+    property: !ENV GOOGLE_ANALYTICS_KEY
+  alternate:
+    # Switch to English
+    - name: English
+      #link: https://leverage.binbash.co
+      link: /en/
+      lang: en
+
+    # Switch to Chinese
+    - name: 简体中文
+      #link: https://leverage.binbash.co/zh/
+      link: /zh/
+      lang: zh
+
+#===================================================================================#
+# Mkdocs Markdown Extentions, Plugins & extras
+#===================================================================================#
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+      toc_depth : "1-1"
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __spanpymdownx.tilde
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      normalize_issue_symbols: true
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      base_path:
+        - docs
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+
+#===================================================================================#
+# Mkdocs Navigation Tree
+#===================================================================================#
+nav:
+  - 首页: index.md
+
+  - 产品中心: 
+    - products/index.md
+    - Smart Tag(NLT-10B): 
+      - products/nlt_10b/index.md
+      - 如何禁用NLT-10B: products/nlt_10b/how_to_disable_nlt_10b.md
+    - Smart Tag(NLT-10): 
+      - products/nlt_10/index.md
+    - Smart Tag(NLT-30): 
+      - products/nlt_30/index.md
+
+  - 帮助中心:
+    - help/index.md
+    - How to Disable FT-10 Tag: 
+      - help/ft-10/index.md
+    - How to Disable CR-10 Card: 
+      - help/cr-10/index.md
+
+  - 关于我们:
+      - about_us/index.md
+      - 联系我们: about_us/contact_us.md
